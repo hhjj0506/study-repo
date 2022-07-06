@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
     }
 
     for (int i = 0; i < cnt; i++) {
-        if (a[i] > a[i+1]) {
+        if (a[i] > a[i+1] && i != cnt-1) {
             atemp = a[i];
             btemp = b[i];
             a[i] = a[i+1];
@@ -25,12 +25,16 @@ int main(int argc, char const *argv[])
     }
 
     for (int i = 0; i < cnt; i++) {
-        if (a[i] == a[i+1] && b[i] != b[i+1]) {
-            
+        if (a[i] == a[i+1] && b[i] != b[i+1] && b[i] > b[i+1]) {
+            atemp = a[i];
+            btemp = b[i];
+            a[i] = a[i+1];
+            b[i] = b[i+1];
+            a[i+1] = atemp;
+            b[i+1] = btemp;
         }
     }
 
-    cout << endl;
     for (int i = 0; i < cnt; i++) {
         cout << a[i] << " " << b[i] << endl;
     }
