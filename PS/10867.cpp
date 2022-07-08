@@ -6,15 +6,29 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    int num;
-    string temp;
+    int num, temp;
+    vector<int> arr;
 
     cin >> num;
-    temp = to_string(num);
 
-    sort(temp.begin(), temp.end(), greater<char>());
+    for (int i = 0; i < num; i++) {
+        cin >> temp;
+        arr.push_back(temp);
+    }
 
-    cout << temp;
+    sort(arr.begin(), arr.end());
+
+    cout << arr[0] << " ";
+    temp = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+        if (temp == arr[i]) {
+            temp = arr[i];
+        } else {
+            cout << arr[i] << " ";
+            temp = arr[i];
+        }
+    }
 
     return 0;
 }
