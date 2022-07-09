@@ -18,12 +18,10 @@ int main(int argc, char const *argv[])
 
     sort(arr.begin(), arr.end());
 
-    arr.erase(arr.end());
-
     for (auto j : arr) {
         cost += j;
     }
-
+    cost = cost - arr[arr.size()-1];
     cout << cost;
 
     return 0;
