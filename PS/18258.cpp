@@ -2,12 +2,12 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <stack>
+#include <queue>
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    stack<int> st;
+    queue<int> queue;
     string order;
     int num, temp;
     vector<int> arr;
@@ -19,25 +19,31 @@ int main(int argc, char const *argv[])
 
         if (order == "push") {
             cin >> temp;
-            st.push(temp);
+            queue.push(temp);
         } else if (order == "pop") {
-            if (st.empty()) {
+            if (queue.empty()) {
                 arr.push_back(-1);
             } else {
-                temp = st.top();
-                st.pop();
+                temp = queue.front();
+                queue.pop();
                 arr.push_back(temp);
             }
         } else if (order == "size") {
-            arr.push_back(st.size());
+            arr.push_back(queue.size());
         } else if (order == "empty") {
-            if (st.empty()) arr.push_back(1);
+            if (queue.empty()) arr.push_back(1);
             else arr.push_back(0);
-        } else if (order == "top") {
-            if (st.empty()) {
+        } else if (order == "front") {
+            if (queue.empty()) {
                 arr.push_back(-1);
             } else {
-                arr.push_back(st.top());
+                arr.push_back(queue.front());
+            }
+        } else if (order == "back") {
+            if (queue.empty()) {
+                arr.push_back(-1);
+            } else {
+                arr.push_back(queue.back());
             }
         }
     }
