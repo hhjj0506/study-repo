@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     int num, total = 0, temp;
-    vector<int> A, B, biggest;
+    vector<int> A, B;
 
     cin >> num;
 
@@ -23,7 +23,14 @@ int main(int argc, char const *argv[])
         B.push_back(temp);
     } 
 
-    // B에서 가장 큰 수를 찾
+    // B에서 가장 큰 수를 찾아 A[i]와 곱하고 total에 더한다. 그리고 그 수는 지우기
+    for (auto i : A) {
+        temp = *max_element(B.begin(), B.end());
+        total += A[i] * temp;
+        B.erase(max_element(B.begin(), B.end()));
+    }
+
+    cout << total;
 
     return 0;
 }
